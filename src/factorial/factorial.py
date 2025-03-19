@@ -20,10 +20,22 @@ def factorial(num):
             num -= 1
         return fact
 
-if len(sys.argv) < 2:
-    num = int(input("Ingrese un número para calcular su factorial: "))
-else:
-    num = int(sys.argv[1])
+def calcular_rango(desde, hasta):
+    for num in range(desde, hasta + 1):
+        print(f"Factorial de {num}! es {factorial(num)}")
 
-print("Factorial", num, "! es", factorial(num))
+if len(sys.argv) < 2:
+    entrada = input("Ingrese un rango en formato desde-hasta (ej. 4-8): ")
+else:
+    entrada = sys.argv[1]
+
+if "-" in entrada:
+    partes = entrada.split("-")
+    desde = int(partes[0])
+    hasta = int(partes[1])
+else:
+    desde = hasta = int(entrada)
+
+calcular_rango(desde, hasta)
+
 
